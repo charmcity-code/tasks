@@ -8,10 +8,6 @@ import { CycleHoliday } from "./components/CycleHoliday";
 import { Counter } from "./components/Counter";
 
 function App(): React.JSX.Element {
-    const handleLogClick = () => {
-        console.log("Hello World!");
-    };
-
     return (
         <div className="App">
             <header
