@@ -19,8 +19,23 @@ function ShoveBoxButton({
     );
 }
 
-function MoveableBox(): React.JSX.Element {
-    const [position, setPosition] = useState<number>(10);
+// WHAT WAS WRONG:
+// MoveableBox owned the position state, but ShoveBoxButton had no way to access
+// or update it — sibling components can't share each other's local state.
+//
+// The commented-out code tried two additional broken things:
+// 1. Called MoveableBox() as a plain function instead of rendering <MoveableBox />.
+//    Calling a component as a function bypasses React's rendering system and
+//    means hooks inside it won't work correctly.
+// 2. Tried to access box.position and box.setPosition on the returned JSX element,
+//    but JSX elements are plain objects — they don't expose state variables.
+//
+// HOW IT WAS FIXED:
+// State was lifted up to ShoveBox (the common parent). position and setPosition
+// are passed as props to both ShoveBoxButton and MoveableBox so they share
+// the same value. MoveableBox no longer owns its own state.
+
+function MoveableBox({ position }: { position: number }): React.JSX.Element {
     return (
         <div
             data-testid="moveable-box"
@@ -38,19 +53,19 @@ function MoveableBox(): React.JSX.Element {
 }
 
 export function ShoveBox(): React.JSX.Element {
-    const box = MoveableBox();
+    const [position, setPosition] = useState<number>(10);
 
     return (
         <div>
             <h3>Shove Box</h3>
-            {/* <span>The box is at: {box.position}</span>
+            <span>The box is at: {position}</span>
             <div>
                 <ShoveBoxButton
-                    position={box.position}
-                    setPosition={box.setPosition}
+                    position={position}
+                    setPosition={setPosition}
                 ></ShoveBoxButton>
-                {box}
-            </div> */}
+                <MoveableBox position={position}></MoveableBox>
+            </div>
         </div>
     );
 }
