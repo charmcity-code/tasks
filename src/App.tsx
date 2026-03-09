@@ -1,15 +1,15 @@
 import React from "react";
 import "./App.css";
-import { ChangeType } from "./components/ChangeType";
-import { RevealAnswer } from "./components/RevealAnswer";
-import { StartAttempt } from "./components/StartAttempt";
-import { TwoDice } from "./components/TwoDice";
-import { CycleHoliday } from "./components/CycleHoliday";
-import { Counter } from "./components/Counter";
-import { DoubleHalf } from "./bad-components/DoubleHalf";
-import { ColoredBox } from "./bad-components/ColoredBox";
-import { ShoveBox } from "./bad-components/ShoveBox";
-import { ChooseTeam } from "./bad-components/ChooseTeam";
+// import { ChangeType } from "./components/ChangeType";
+// import { RevealAnswer } from "./components/RevealAnswer";
+// import { StartAttempt } from "./components/StartAttempt";
+// import { TwoDice } from "./components/TwoDice";
+// import { CycleHoliday } from "./components/CycleHoliday";
+// import { Counter } from "./components/Counter";
+// import { DoubleHalf } from "./bad-components/DoubleHalf";
+// import { ColoredBox } from "./bad-components/ColoredBox";
+// import { ShoveBox } from "./bad-components/ShoveBox";
+// import { ChooseTeam } from "./bad-components/ChooseTeam";
 import { CheckAnswer } from "./form-components/CheckAnswer";
 import { GiveAttempts } from "./form-components/GiveAttempts";
 import { EditMode } from "./form-components/EditMode";
@@ -18,7 +18,7 @@ import { ChangeColor } from "./form-components/ChangeColor";
 
 function App(): React.JSX.Element {
     return (
-        <div className="App">
+        <div className="App" style={{ maxWidth: 600, margin: "0 auto" }}>
             <header
                 className="App-header"
                 style={{ backgroundColor: "#87CEEB" }}
@@ -38,8 +38,8 @@ function App(): React.JSX.Element {
                 options={["a", "b", "c"]}
                 expectedAnswer="b"
             ></MultipleChoiceQuestion>
-            <hr></hr>
-            {/* <DoubleHalf></DoubleHalf> */}
+            {/* <hr></hr>
+            <DoubleHalf></DoubleHalf>
             <hr></hr>
             <ChooseTeam></ChooseTeam>
             <hr></hr>
@@ -57,7 +57,7 @@ function App(): React.JSX.Element {
             <hr />
             <ChangeType></ChangeType>
             <hr />
-            <CycleHoliday></CycleHoliday>
+            <CycleHoliday></CycleHoliday> */}
         </div>
     );
 }
